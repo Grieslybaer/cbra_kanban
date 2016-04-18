@@ -1,0 +1,3 @@
+module KanbanBoardUi
+  VERSION = "0.0.1"
+end
