@@ -7,17 +7,18 @@ require "kanban_account/version"
 Gem::Specification.new do |s|
   s.name        = "kanban_account"
   s.version     = KanbanAccount::VERSION
-  s.authors     = ["Grie"]
+  s.authors     = ["Stephan Griessner"]
   s.email       = ["sgriessner.mmt-b2012@fh-salzburg.ac.at"]
-  s.homepage    = "TODO"
-  s.summary     = "TODO: Summary of KanbanAccount."
-  s.description = "TODO: Description of KanbanAccount."
+  s.homepage    = "http://www.fh-salzburg.ac.at"
+  s.summary     = "KanbanAccount."
+  s.description = "KanbanAccount."
   s.license     = "MIT"
 
   s.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
   s.test_files = Dir["test/**/*"]
 
   s.add_dependency "rails", "~> 4.2.5.2"
+  s.add_dependency "devise"
 
   s.add_development_dependency "sqlite3"
 end
