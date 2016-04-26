@@ -45,3 +45,7 @@ group :development do
   gem 'spring'
 end
 
+path 'components'  do
+	gem 'kanban_app'
+end
+

@@ -13,3 +13,6 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
+path '../components'  do
+	gem 'kanban_board_ui'
+end
