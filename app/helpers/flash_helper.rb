@@ -1,9 +1,9 @@
 module FlashHelper
 	FLASH_CLASSES = {
-		notice: "alert alert-info",
-		success: "alert alert-success",
-		alert: "alert alert-danger",
-		error: "alert alert-danger"
+		notice: "alert-info",
+		success: "alert-success",
+		alert: "alert-danger",
+		error: "alert-danger"
 	}
 
 	def flash_class(level)
