@@ -5,11 +5,10 @@
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			<% if user_signed_in? %>
-				<li><%= link_to "Kanban", root_path %></li>
-				<li><%= link_to "Logout", kanban_account.destroy_user_session_path, method: :delete %></li>
+				<li><%= link_to "Logout", account_auth.destroy_user_session_path, method: :delete %></li>
 			<% else %>
-				<li><%= link_to "Log in", kanban_account.user_session_path %></li>
-				<li><%= link_to "Sign up", kanban_account.new_user_registration_path %></li>
+				<li><%= link_to "Log in", account_auth.user_session_path %></li>
+				<li><%= link_to "Sign up", account_auth.new_user_registration_path %></li>
 			<% end %>
 		</ul>
 	</div>

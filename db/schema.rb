@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160426133951) do
+ActiveRecord::Schema.define(version: 20160427083339) do
 
-  create_table "kanban_account_users", force: :cascade do |t|
+  create_table "account_auth_users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160426133951) do
     t.datetime "updated_at",                          null: false
   end
 
-  add_index "kanban_account_users", ["email"], name: "index_kanban_account_users_on_email", unique: true
-  add_index "kanban_account_users", ["reset_password_token"], name: "index_kanban_account_users_on_reset_password_token", unique: true
+  add_index "account_auth_users", ["email"], name: "index_account_auth_users_on_email", unique: true
+  add_index "account_auth_users", ["reset_password_token"], name: "index_account_auth_users_on_reset_password_token", unique: true
 
 end

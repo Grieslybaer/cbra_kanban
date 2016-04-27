@@ -54,7 +54,7 @@ Rails.application.routes.draw do
   #     resources :products
   #   end
   mount KanbanDashboard::Engine, at: '/', as: 'kanban_dashboard'
-  mount KanbanAccount::Engine, at: '/account', as: 'kanban_account'
+  mount AccountAuth::Engine, at: '/account', as: 'account_auth'
 
   root to: 'kanban_dashboard/dashboard#index'
 end
