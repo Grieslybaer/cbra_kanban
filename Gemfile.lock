@@ -7,7 +7,7 @@ PATH
     kanban_dashboard (0.0.1)
       rails (~> 4.2.5.2)
     kanban_user (0.0.1)
-      activerecord (~> 4.2.5.2)
+      rails (~> 4.2.5.2)
     kanban_user_profile (0.0.1)
       kanban_user
       rails (~> 4.2.5.2)

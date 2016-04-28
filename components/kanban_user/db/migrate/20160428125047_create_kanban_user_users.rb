@@ -1,6 +1,6 @@
-class DeviseCreateAccountAuthUsers < ActiveRecord::Migration
+class CreateKanbanUserUsers < ActiveRecord::Migration
   def change
-    create_table(:account_auth_users) do |t|
+    create_table :kanban_user_users do |t|
       ## Database authenticatable
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
@@ -34,9 +34,9 @@ class DeviseCreateAccountAuthUsers < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :account_auth_users, :email,                unique: true
-    add_index :account_auth_users, :reset_password_token, unique: true
-    # add_index :account_auth_users, :confirmation_token,   unique: true
-    # add_index :account_auth_users, :unlock_token,         unique: true
+    add_index :kanban_user_users, :email,                unique: true
+    add_index :kanban_user_users, :reset_password_token, unique: true
+    # add_index :kanban_user_users, :confirmation_token,   unique: true
+    # add_index :kanban_user_users, :unlock_token,         unique: true
   end
 end
