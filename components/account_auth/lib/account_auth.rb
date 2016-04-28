@@ -10,10 +10,13 @@ module AccountAuth
 	mattr_accessor :user_class
 
 	# overridung setter method to get Class instead of String
-	# check if user_class is set
-	# => otherwise it throws an error (undefined method constantize for nil)
 	def self.user_class
-		@@user_class.constantize if @@user_class.present?
+		error = "Please define AccountAuth.user_class in config/initializers/account_auth.rb"
+		@@user_class.constantize || raise(ConfigurationNotSet, error)
 	end
 
+	# Class for Configuration Error
+	class ConfigurationNotSet < StandardError
+
+	end
 end

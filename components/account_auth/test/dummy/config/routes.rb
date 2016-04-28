@@ -1,7 +1,4 @@
-Rails.application.routes.draw do          
-  get 'welcome/index'
+Rails.application.routes.draw do
 
   mount AccountAuth::Engine => "/account_auth"
-
-  root to: 'welcome#index'
 end
