@@ -19,7 +19,8 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.5.2"
   s.add_dependency "devise"
-  #s.add_dependency "kanban_user"
 
   s.add_development_dependency "sqlite3"
+  s.add_development_dependency "minitest-rails-capybara"
+  s.add_development_dependency "poltergeist", "~> 1.5.0"
 end
