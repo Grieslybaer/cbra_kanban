@@ -14,6 +14,17 @@ module AccountAuth
           require path
         end
   		end
+
+      def mount_account_auth_in_routes
+        puts "Adding: mount AccountAuth::Engine, at: \"/account\" in config/routes.rb"
+        insert_into_file "#{Rails.root}/config/routes.rb", after: /routes.draw do\n/ do
+          %Q{
+  # Mount AccountAuth::Engine
+  mount AccountAuth::Engine, at: '/account', as: 'account_auth'
+          }
+        end
+      end
+
 		end
 	end
 end
