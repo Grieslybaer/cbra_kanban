@@ -11,12 +11,6 @@ module AccountAuth
 
 	# overridung setter method to get Class instead of String
 	def self.user_class
-		error = "Please define AccountAuth.user_class in config/initializers/account_auth.rb"
-		@@user_class.constantize || raise(ConfigurationNotSet, error)
-	end
-
-	# Class for Configuration Error
-	class ConfigurationNotSet < StandardError
-
+		@@user_class.constantize if @@user_class.present?
 	end
 end
