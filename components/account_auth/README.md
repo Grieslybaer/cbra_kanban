@@ -1,7 +1,7 @@
 # AccountAuth
 This is a quick guide to use the AccountAuth Engine for Ruby on Rails Applications.
 
-This engine adds an authentication syntax, based on Devise, to your application.
+This engine adds an authentication syntax (based on Devise) to your application.
 
 ## Getting started
 AccountAuth works with Rails 4.2 onwards. As its not available on a Gemserver, you need to download it manualy and put it somewhere in your application. I recommend to put it into your *vendor/* folder. Maybe create another folder called *engines*. You can then add it to your Gemfile with:
@@ -70,12 +70,6 @@ class CreateUsers < ActiveRecord::Migration
     add_index :users, :reset_password_token, unique: true
   end
 end
-```
-
-## Uninstall AccountAuth
-The command below will remove all migrations from the engine:
-```console
-rake db:migrate SCOPE=account_auth VERSION=0
 ```
 
 ## License
