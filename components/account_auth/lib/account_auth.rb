@@ -1,4 +1,5 @@
 require "devise"
+require "decorators"
 require "account_auth/engine"
 
 module AccountAuth
