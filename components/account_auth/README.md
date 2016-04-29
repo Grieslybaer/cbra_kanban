@@ -1,5 +1,6 @@
 # AccountAuth
 This is a quick guide to use the AccountAuth Engine for Ruby on Rails Applications.
+
 This engine adds an authentication syntax, based on Devise, to your application.
 
 ## Getting started
@@ -19,11 +20,14 @@ rails generate account_auth:install
 
 This will add an initializer to your *config/initializers* folder and mount the engine in your routes.
 
+
+
 After you install AccountAuth, you need to set the classname for the User in the *config/initializers/account_auth.rb* file to something like that:
 
 ```ruby
 AccountAuth.user_class = "User"
 ```
+
 
 The engine is mounted to the */account* path within your applications routes:
 
@@ -33,7 +37,8 @@ mount AccountAuth::Engine, at: "/account", as: "account_auth"
 
 Feel free to specify another path.
 
-##User_Class
+
+## User Migration
 Make sure your user migration has at least the following attributes (based on Devise):
 
 ```ruby
