@@ -1,4 +1,4 @@
 KanbanUserProfile::Engine.routes.draw do
-  resources :users
-  root to: 'users#index'
+  resources :users, only: [:show, :edit, :update]
+  match 'users', to: 'users#index', constraints: { format: 'json' }, via: :get
 end
