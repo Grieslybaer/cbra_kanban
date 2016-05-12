@@ -2,7 +2,19 @@ module KanbanAuthorization
   class Ability
     include CanCan::Ability
 
+    class_attribute :abilities
+    self.abilities = Set.new
+
+    def self.register_ability(ability)
+      self.abilities.add(ability)
+    end
+
+    def self.remove_ability(ability)
+      self.abilities.delete(ability)
+    end
+
     def initialize(user)
+      Rails.logger.info self.abilities.inspect
       # Define abilities for the passed in user here. For example:
       #
       #   user ||= User.new # guest user (not logged in)
@@ -29,6 +41,18 @@ module KanbanAuthorization
       #
       # See the wiki for details:
       # https://github.com/CanCanCommunity/cancancan/wiki/Defining-Abilities
+
+      # if user
+      #   can :manage, :all
+      # else
+      #   can :read, :all
+      # end
+      
+      Ability.abilities.each do |klass|
+        ability = klass.send(:new, user)
+        @rules = rules + ability.send(:rules)
+      end
+
     end
   end
 end

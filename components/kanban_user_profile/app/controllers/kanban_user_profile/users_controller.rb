@@ -3,6 +3,7 @@ require_dependency "kanban_user_profile/application_controller"
 module KanbanUserProfile
   class UsersController < ApplicationController
     before_filter :authenticate_user!
+    authorize_resource class: KanbanUser::User
     before_action :set_user, only: [:edit, :update]
 
     # GET /users
