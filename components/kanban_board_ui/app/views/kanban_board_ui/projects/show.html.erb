@@ -1,0 +1,23 @@
+<h2><%= @project.name %></h2>
+<hr>
+
+<table class="table">
+	<thead>
+		<tr>
+			<% @states.each do |state| %>
+				<th><%= state %></th>
+			<% end %>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+
+		</tr>
+	</tbody>
+</table>
+<div class="alert alert-info">
+	<p><strong>Owner:</strong> <%= @owner.full_name %></p>
+	<p><strong>Deadline:</strong> <%= @project.deadline %></p>
+	<p class="text-muted"><%= @project.description %></p>
+</div>
+<%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-success pull-right' %>

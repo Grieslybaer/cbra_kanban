@@ -5,9 +5,20 @@
 		</div>
 		<ul class="nav navbar-nav navbar-right">
 			<% if user_signed_in? %>
-				<li><%= link_to "Profile", kanban_user_profile.user_path(current_user) %></li>
-				<li><%= link_to "Edit Account", account_auth.edit_user_registration_path %></li>
-				<li><%= link_to "Logout", account_auth.destroy_user_session_path, method: :delete %></li>
+				
+				<li><%= link_to "Projects", kanban_board.root_path %></li>
+				<li><%= link_to "New project", new_project_path %></li>
+				<li role="presentation" class="dropdown">
+			    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+			      <%= current_user.first_name %> <span class="caret"></span>
+			    </a>
+			    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+			    	<li><%= link_to "Profile", kanban_user_profile.user_path(current_user) %></li>
+			    	<li role="separator" class="divider"></li>
+			    	<li><%= link_to "Edit Account", account_auth.edit_user_registration_path %></li>
+			      <li><%= link_to "Logout", account_auth.destroy_user_session_path, method: :delete %></li>
+			    </ul>
+			  </li>
 			<% else %>
 				<li><%= link_to "Log in", account_auth.user_session_path %></li>
 				<li><%= link_to "Sign up", account_auth.new_user_registration_path %></li>

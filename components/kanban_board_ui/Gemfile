@@ -13,3 +13,7 @@ gemspec
 # To use a debugger
 # gem 'byebug', group: [:development, :test]
 
+path "../" do
+	gem "kanban_board"
+	gem "kanban_authorization"
+end

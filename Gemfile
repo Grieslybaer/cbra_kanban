@@ -54,4 +54,6 @@ path 'components'  do
 	gem 'kanban_authorization'
 	gem 'kanban_user_profile'
   gem 'kanban_board'
+  gem 'kanban_board_ui'
+  gem 'kanban_card'
 end
