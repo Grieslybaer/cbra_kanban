@@ -8,6 +8,9 @@ PATH
     kanban_authorization (0.0.1)
       cancancan (~> 1.10)
       rails (~> 4.2.5.2)
+    kanban_board (0.0.1)
+      decorators (~> 2.0.1)
+      rails (~> 4.2.5.2)
     kanban_dashboard (0.0.1)
       rails (~> 4.2.5.2)
     kanban_user (0.0.1)
@@ -191,6 +194,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   kanban_authorization!
+  kanban_board!
   kanban_dashboard!
   kanban_user_profile!
   rails (= 4.2.5.2)
