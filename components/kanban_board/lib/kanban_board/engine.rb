@@ -9,5 +9,9 @@ module KanbanBoard
     		end
     	end
     end
+
+    initializer :load_decorators do
+        Decorators.register! Engine.root, Rails.root
+    end
   end
 end
