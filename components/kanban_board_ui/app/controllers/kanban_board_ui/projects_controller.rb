@@ -2,15 +2,17 @@ require_dependency "kanban_board_ui/application_controller"
 
 module KanbanBoardUi
   class ProjectsController < ApplicationController
-    before_action :set_project, only: [:show, :edit, :update, :destroy]
+    before_action :set_project, only: [:edit, :update, :destroy]
 
     def index
       @projects = KanbanBoard::Project.all
     end
 
     def show
+      @project = KanbanBoard::Project.includes(:assignments, :tasks, :users).find(params[:id])
       @owner = @project.users.first
       @states = KanbanBoard.states
+      #@tasks = @project.tasks
     end
 
     def new
@@ -24,7 +26,7 @@ module KanbanBoardUi
       @project = KanbanBoard::Project.new(project_params)
       respond_to do |format|
         if @project.save
-          @project.projects_users.create!(user: current_user, user_role: 'admin')
+          @project.members.create!(user: current_user, user_role: 'admin')
           format.html { redirect_to @project, notice: 'Project was successfully created.' }
           format.json { render action: 'show', status: :created, location: @project }
         else

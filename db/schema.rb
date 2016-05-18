@@ -13,28 +13,20 @@
 
 ActiveRecord::Schema.define(version: 20160516092600) do
 
-  create_table "kanban_board_projects", force: :cascade do |t|
-    t.string   "name"
-    t.text     "description"
-    t.date     "finishing_date"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-  end
-
-  create_table "kanban_board_projects_tasks", force: :cascade do |t|
+  create_table "kanban_board_assignments", force: :cascade do |t|
     t.integer  "project_id"
-    t.integer  "card_id"
+    t.integer  "task_id"
     t.integer  "user_id"
     t.string   "status",     null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "kanban_board_projects_tasks", ["card_id"], name: "index_kanban_board_projects_tasks_on_card_id"
-  add_index "kanban_board_projects_tasks", ["project_id"], name: "index_kanban_board_projects_tasks_on_project_id"
-  add_index "kanban_board_projects_tasks", ["user_id"], name: "index_kanban_board_projects_tasks_on_user_id"
+  add_index "kanban_board_assignments", ["project_id"], name: "index_kanban_board_assignments_on_project_id"
+  add_index "kanban_board_assignments", ["task_id"], name: "index_kanban_board_assignments_on_task_id"
+  add_index "kanban_board_assignments", ["user_id"], name: "index_kanban_board_assignments_on_user_id"
 
-  create_table "kanban_board_projects_users", force: :cascade do |t|
+  create_table "kanban_board_members", force: :cascade do |t|
     t.integer  "project_id"
     t.integer  "user_id"
     t.string   "user_role",  null: false
@@ -42,8 +34,16 @@ ActiveRecord::Schema.define(version: 20160516092600) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "kanban_board_projects_users", ["project_id"], name: "index_kanban_board_projects_users_on_project_id"
-  add_index "kanban_board_projects_users", ["user_id"], name: "index_kanban_board_projects_users_on_user_id"
+  add_index "kanban_board_members", ["project_id"], name: "index_kanban_board_members_on_project_id"
+  add_index "kanban_board_members", ["user_id"], name: "index_kanban_board_members_on_user_id"
+
+  create_table "kanban_board_projects", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.date     "finishing_date"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
 
   create_table "kanban_card_tasks", force: :cascade do |t|
     t.string   "name"

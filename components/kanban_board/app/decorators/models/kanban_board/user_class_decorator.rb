@@ -1,8 +1,8 @@
 module KanbanBoard
 	KanbanBoard.user_class.class_eval do
-		has_many :projects_users, class_name: KanbanBoard::ProjectsUser
-  	has_many :projects, through: :projects_users
-  	has_many :projects_tasks, class_name: KanbanBoard::ProjectsTask
-  	has_many :tasks, through: :projects_tasks
+		has_many :members, class_name: KanbanBoard::Member
+  	has_many :projects, through: :members
+  	has_many :assignments, class_name: KanbanBoard::Assignment
+  	has_many :tasks, through: :assignments
 	end if KanbanBoard.user_class.present?
 end
