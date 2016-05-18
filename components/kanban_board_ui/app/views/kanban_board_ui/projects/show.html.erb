@@ -13,19 +13,21 @@
 		<tr>
 			<% @states.each_with_index do |state, index| %>
 				<td>
-					<% @project.assignments.includes(:task).where(status: state).each do |a| %>
-						<div class="card">
-							<p><strong><%= link_to a.task.name, project_task_path(@project, a.task) %></strong></p>
-							<p>Priority: <%= a.task.priority %></p>
-							<p>Deadline: <%= a.task.finishing_date %></p>
-							<p><%= truncate(a.task.description) %></p>
-							<% if state != @states.first %>
-							<%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-chevron-left pull-left"), project_assignment_path(@project, a, assignment: { status: @states[index-1]}), method: :put, confirm: "Are you sure?" %>
-							<% end %>
-							<% if state != @states.last %>
-							<%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-chevron-right pull-right"), project_assignment_path(@project, a, assignment: { status: @states[index+1]}), method: :put, confirm: "Are you sure?" %>
-							<% end %>
-						</div>
+					<% if @assignments[state] %>
+						<% @assignments[state].each do |a| %>
+							<div class="card">
+								<p><strong><%= link_to a.task.name, project_task_path(@project, a.task) %></strong></p>
+								<p>Priority: <%= a.task.priority %></p>
+								<p>Deadline: <%= a.task.finishing_date %></p>
+								<p><%= truncate(a.task.description) %></p>
+								<% if state != @states.first %>
+								<%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-chevron-left pull-left"), project_assignment_path(@project, a, assignment: { status: @states[index-1]}), method: :put, confirm: "Are you sure?" %>
+								<% end %>
+								<% if state != @states.last %>
+								<%= link_to content_tag(:span, nil, class: "glyphicon glyphicon-chevron-right pull-right"), project_assignment_path(@project, a, assignment: { status: @states[index+1]}), method: :put, confirm: "Are you sure?" %>
+								<% end %>
+							</div>
+						<% end %>
 					<% end %>
 				</td>
 			<% end %>

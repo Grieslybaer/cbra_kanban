@@ -2,17 +2,16 @@ require_dependency "kanban_board_ui/application_controller"
 
 module KanbanBoardUi
   class ProjectsController < ApplicationController
-    before_action :set_project, only: [:edit, :update, :destroy]
+    before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
       @projects = KanbanBoard::Project.all
     end
 
     def show
-      @project = KanbanBoard::Project.includes(:assignments, :tasks, :users).find(params[:id])
+      @assignments = KanbanBoard::Assignment.includes(:task, :user).where(project_id: params[:id]).group_by(&:status)
       @owner = @project.users.first
       @states = KanbanBoard.states
-      #@tasks = @project.tasks
     end
 
     def new
@@ -58,7 +57,7 @@ module KanbanBoardUi
 
     private
     def set_project
-      @project = KanbanBoard::Project.find(params[:id])
+      @project = KanbanBoard::Project.includes(:users).find(params[:id])
     end
 
     def project_params

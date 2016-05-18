@@ -63,7 +63,7 @@ module KanbanBoardUi
     end
 
     def set_project
-      @project = KanbanBoard::Project.find(params[:project_id])
+      @project = KanbanBoard::Project.includes(:tasks).find(params[:project_id])
     end
   end
 end
