@@ -2,10 +2,12 @@ require_dependency "kanban_board_ui/application_controller"
 
 module KanbanBoardUi
   class ProjectsController < ApplicationController
+    before_filter :authenticate_user!
+    authorize_resource class: KanbanBoard::Project
     before_action :set_project, only: [:show, :edit, :update, :destroy]
 
     def index
-      @projects = KanbanBoard::Project.all
+      @projects = KanbanBoard::Project.includes(:members).where(kanban_board_members: {user_id: current_user.id})
     end
 
     def show

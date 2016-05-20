@@ -12,6 +12,7 @@ PATH
       decorators (~> 2.0.1)
       rails (~> 4.2.5.2)
     kanban_board_ui (0.0.1)
+      decorators (~> 2.0.1)
       kanban_authorization
       kanban_board
       rails (~> 4.2.5.2)
