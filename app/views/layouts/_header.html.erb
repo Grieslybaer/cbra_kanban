@@ -10,7 +10,7 @@
 				<li><%= link_to "New project", kanban_board.new_project_path %></li>
 				<li role="presentation" class="dropdown">
 			    <a class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
-			      <%= current_user.first_name %> <span class="caret"></span>
+			      Me <span class="caret"></span>
 			    </a>
 			    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
 			    	<li><%= link_to "Profile", kanban_user_profile.user_path(current_user) %></li>

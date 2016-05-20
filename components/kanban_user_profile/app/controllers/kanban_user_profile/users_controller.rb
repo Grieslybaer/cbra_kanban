@@ -30,14 +30,10 @@ module KanbanUserProfile
     end
 
     private
+    
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      if current_user.id.to_s == params[:id]
-        @user = current_user
-      else
-        @user = KanbanUser::User.find(params[:id])
-        redirect_to user_path, notice: "You can not edit another user!"
-      end
+      @user = current_user
     end
 
     # Only allow a trusted parameter "white list" through.

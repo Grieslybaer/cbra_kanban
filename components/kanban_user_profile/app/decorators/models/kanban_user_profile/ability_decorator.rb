@@ -6,6 +6,7 @@ module KanbanUserProfile
 
 		def initialize(user)
 			can :manage, KanbanUser::User, id: user.id
+            can :read, KanbanUser::User
 		end
 	end
 end
