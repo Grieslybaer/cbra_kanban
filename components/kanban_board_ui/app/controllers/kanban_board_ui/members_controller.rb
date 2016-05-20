@@ -4,20 +4,12 @@ module KanbanBoardUi
   class MembersController < ApplicationController
     before_action :set_project
     before_action :set_member, only: [:show, :edit, :update, :destroy]
+    
     def index
-      @members = @project.members.all
-    end
-
-    def show
-    end
-
-    def new
       @project_user_ids = @project.users.pluck(:id)
       @users = KanbanBoard.user_class.all
+      @members = @project.members.includes(:user)
       @member = @project.members.new
-    end
-
-    def edit
     end
 
     def create
@@ -25,10 +17,10 @@ module KanbanBoardUi
 
       respond_to do |format|
         if @member.save
-          format.html { redirect_to project_path(@project), notice: 'Member was successfully created.' }
+          format.html { redirect_to project_member_path(@project), notice: 'Member was successfully added.' }
           format.json { render action: 'show', status: :created, location: @member }
         else
-          format.html { render action: 'new' }
+          format.html { render action: 'index' }
           format.json { render json: @member.errors, status: :unprocessable_entity }
         end
       end
@@ -37,7 +29,7 @@ module KanbanBoardUi
     def update
       respond_to do |format|
         if @member.update(member_params)
-          format.html { redirect_to project_path(@project), notice: 'Member was successfully updated.' }
+          format.html { redirect_to project_members_path(@project), notice: 'Member was successfully updated.' }
           format.json { head :no_content }
         else
           format.html { render action: 'edit' }
@@ -49,7 +41,7 @@ module KanbanBoardUi
     def destroy
       @member.destroy
       respond_to do |format|
-        format.html { redirect_to project_members_url }
+        format.html { redirect_to project_members_path(@project) }
         format.json { head :no_content }
       end
     end
