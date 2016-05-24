@@ -23,7 +23,7 @@
 			<tr>
 				<td><%= index+1 %></td>
 				<td><%= project.name %></td>
-				<td><%= truncate(project.description) %></td>
+				<td><%= truncate(project.description) if project.description %></td>
 				<td><%= project.finishing_date %></td>
 				<td><%= link_to 'Show', project, class: 'btn btn-primary btn-xs' %></td>
 				<% if can? :manage, project %>
