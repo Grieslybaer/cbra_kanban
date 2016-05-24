@@ -13,9 +13,11 @@ module KanbanBoardUi
 
     def new
       @task = @project.tasks.new
+      @members = @project.users.all
     end
 
     def edit
+      @members = @project.users.all
     end
 
     def create
@@ -23,6 +25,7 @@ module KanbanBoardUi
 
       respond_to do |format|
         if @task.save
+          @task.assignment.update(task_params[:assignment_attributes])
           format.html { redirect_to project_path(@project), notice: 'Task was successfully created.' }
           format.json { render action: 'show', status: :created, location: @task }
         else
@@ -33,6 +36,12 @@ module KanbanBoardUi
     end
 
     def update
+
+      if params[:task][:assignment_attributes]
+        @task.assignment.update(task_params[:assignment_attributes])
+        params[:task].delete(:assignment_attributes)
+      end
+
       respond_to do |format|
         if @task.update(task_params)
           format.html { redirect_to project_path(@project), notice: 'Task was successfully updated.' }
@@ -55,7 +64,7 @@ module KanbanBoardUi
     private
 
     def task_params
-      params.require(:task).permit(:name, :description, :finishing_date, :priority)
+      params.require(:task).permit(:name, :description, :finishing_date, :priority, assignment_attributes: [:user_id])
     end
 
     def set_task
@@ -63,7 +72,8 @@ module KanbanBoardUi
     end
 
     def set_project
-      @project = KanbanBoard::Project.includes(:tasks).find(params[:project_id])
+      @project = KanbanBoard::Project.includes(:tasks, :users).find(params[:project_id])
     end
+
   end
 end

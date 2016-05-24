@@ -19,7 +19,7 @@ module KanbanBoardUi
 
     private
     def assignment_params
-      params.require(:assignment).permit(:status, :user)
+      params.require(:assignment).permit(:status)
     end
 
   end
