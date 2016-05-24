@@ -4,6 +4,8 @@ module KanbanBoardUi
   class TasksController < ApplicationController
     before_action :set_project
     before_action :set_task, only: [:show, :edit, :update, :destroy]
+    before_action :set_project_members, only: [:new, :edit]
+
     def index
       @tasks = @project.tasks.all
     end
@@ -13,11 +15,9 @@ module KanbanBoardUi
 
     def new
       @task = @project.tasks.new
-      @members = @project.users.all
     end
 
     def edit
-      @members = @project.users.all
     end
 
     def create
@@ -29,7 +29,7 @@ module KanbanBoardUi
           format.html { redirect_to project_path(@project), notice: 'Task was successfully created.' }
           format.json { render action: 'show', status: :created, location: @task }
         else
-          @members = @project.users.all
+          set_project_members
           format.html { render action: 'new' }
           format.json { render json: @task.errors, status: :unprocessable_entity }
         end
@@ -48,6 +48,7 @@ module KanbanBoardUi
           format.html { redirect_to project_path(@project), notice: 'Task was successfully updated.' }
           format.json { head :no_content }
         else
+          set_project_members
           format.html { render action: 'edit' }
           format.json { render json: @task.errors, status: :unprocessable_entity }
         end
@@ -74,6 +75,10 @@ module KanbanBoardUi
 
     def set_project
       @project = KanbanBoard::Project.includes(:tasks, :users).find(params[:project_id])
+    end
+
+    def set_project_members
+      @members = @project.users.all
     end
 
   end
