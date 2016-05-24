@@ -4,7 +4,8 @@ module KanbanBoard
   	belongs_to :user, class_name: KanbanBoard.user_class.to_s
 
   	@@roles = %w(admin dev)
-
+  	cattr_reader :roles
+  	
   	validates :user, :project, :user_role, presence: true
   	validates :user_role, inclusion: { in: @@roles }
 
