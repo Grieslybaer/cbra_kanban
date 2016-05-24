@@ -15,4 +15,8 @@ module KanbanBoard
 	def self.card_class
 		@@card_class.constantize if @@card_class.present?
 	end
+
+	def self.states
+		@@states ||= ["todo", "in progress", "code review", "done"]
+	end
 end

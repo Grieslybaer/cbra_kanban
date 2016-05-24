@@ -9,6 +9,8 @@ module KanbanBoard
   	has_many :assignments
   	has_many :tasks, through: :assignments
 
+    validates :name, :finishing_date, presence: true
+
   	alias_attribute :title, :name
   	alias_attribute :deadline, :finishing_date
   end

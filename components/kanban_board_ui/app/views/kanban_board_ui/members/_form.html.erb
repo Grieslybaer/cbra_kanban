@@ -4,7 +4,7 @@
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
-      <h4><%= pluralize(@member.errors.count, "error") %> prohibited this Project from being saved:</h4>
+      <h4><%= pluralize(@member.errors.count, "error") %> prohibited this Member from being saved:</h4>
       <ul>
       <% @member.errors.full_messages.each do |message| %>
         <li><%= message %></li>

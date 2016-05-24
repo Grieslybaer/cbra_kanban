@@ -29,6 +29,7 @@ module KanbanBoardUi
           format.html { redirect_to project_path(@project), notice: 'Task was successfully created.' }
           format.json { render action: 'show', status: :created, location: @task }
         else
+          @members = @project.users.all
           format.html { render action: 'new' }
           format.json { render json: @task.errors, status: :unprocessable_entity }
         end

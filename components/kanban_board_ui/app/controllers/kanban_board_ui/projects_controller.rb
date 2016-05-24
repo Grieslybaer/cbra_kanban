@@ -12,7 +12,7 @@ module KanbanBoardUi
 
     def show
       @assignments = KanbanBoard::Assignment.includes(:task, :user).where(project_id: params[:id]).group_by(&:status)
-      @owner = @project.users.first
+      @owner = @project.owners.first
       @states = KanbanBoard.states
     end
 
