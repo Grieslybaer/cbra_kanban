@@ -26,11 +26,15 @@
 				</td><td>
 					<%= member.user_role %>
 				</td><td>
-					<%= link_to 'Destroy', project_member_path(@project, member), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger btn-xs' %>
-				</td><td>
-					<%= form_for([@project, member]) do |f| %>
-						<%= f.select :user_role, ['admin', 'dev'].map { |value| [value, value]} %>
-						<%= f.submit 'update', class: 'btn btn-success btn-xs' %>
+					<% if can? :manage, member %>
+						<%= link_to 'Destroy', project_member_path(@project, member), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger btn-xs' %>
+						</td><td>
+						<%= form_for([@project, member]) do |f| %>
+							<%= f.select :user_role, ['admin', 'dev'].map { |value| [value, value]} %>
+							<%= f.submit 'update', class: 'btn btn-success btn-xs' %>
+						<% end %>
+					<% else %>
+							</td><td>
 					<% end %>
 				</td>
 			</tr>
@@ -38,6 +42,12 @@
 	</tbody>
 </table>
 <% end %>
+<% if can? :create, @project.members.build %>
 <hr>
 <h3>Add Member</h3>
-<%= render 'form' %>
+<div class="row">
+	<div class="col-md-6">
+		<%= render 'form' %>
+	</div>
+</div>
+<% end %>

@@ -3,7 +3,7 @@ require_dependency "kanban_board_ui/application_controller"
 module KanbanBoardUi
   class MembersController < ApplicationController
     before_action :set_project
-    before_action :set_member, only: [:show, :edit, :update, :destroy]
+    before_action :set_member, only: [:update, :destroy]
     
     def index
       @project_user_ids = @project.users.pluck(:id)
@@ -17,8 +17,8 @@ module KanbanBoardUi
 
       respond_to do |format|
         if @member.save
-          format.html { redirect_to project_member_path(@project), notice: 'Member was successfully added.' }
-          format.json { render action: 'show', status: :created, location: @member }
+          format.html { redirect_to project_members_path(@project), notice: 'Member was successfully added.' }
+          format.json { render action: 'index', status: :created, location: @member }
         else
           format.html { render action: 'index' }
           format.json { render json: @member.errors, status: :unprocessable_entity }
@@ -32,7 +32,7 @@ module KanbanBoardUi
           format.html { redirect_to project_members_path(@project), notice: 'Member was successfully updated.' }
           format.json { head :no_content }
         else
-          format.html { render action: 'edit' }
+          format.html { render action: 'index' }
           format.json { render json: @member.errors, status: :unprocessable_entity }
         end
       end
