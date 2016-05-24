@@ -2,10 +2,6 @@ require 'test_helper'
 
 module KanbanBoard
   class MemberTest < ActiveSupport::TestCase
-  	# validates :user, :project, :user_role, presence: true
-  	# validates :user_role, inclusion: { in: @@roles }
-
-  	# alias_attribute :role, :user_role
     
     def setup
       @user = KanbanBoard.user_class.create(first_name: "Stephan", last_name: "Griessner")
