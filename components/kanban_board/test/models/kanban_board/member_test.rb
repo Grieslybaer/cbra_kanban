@@ -1,7 +1,7 @@
 require 'test_helper'
 
 module KanbanBoard
-  class ProjectsTaskTest < ActiveSupport::TestCase
+  class MemberTest < ActiveSupport::TestCase
     # test "the truth" do
     #   assert true
     # end
