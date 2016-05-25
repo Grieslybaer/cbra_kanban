@@ -30,7 +30,7 @@
 						<%= link_to 'Destroy', project_member_path(@project, member), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-danger btn-xs' %>
 						</td><td>
 						<%= form_for([@project, member]) do |f| %>
-							<%= f.select :user_role, ['admin', 'dev'].map { |value| [value, value]} %>
+							<%= f.select :user_role, @roles.map { |value| [value, value]} %>
 							<%= f.submit 'update', class: 'btn btn-success btn-xs' %>
 						<% end %>
 					<% else %>

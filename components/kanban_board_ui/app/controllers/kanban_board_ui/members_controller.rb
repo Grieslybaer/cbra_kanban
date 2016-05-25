@@ -64,6 +64,7 @@ module KanbanBoardUi
       @project_user_ids = @project.users.pluck(:id)
       @users = KanbanBoard.user_class.all
       @members = @project.members.includes(:user)
+      @roles = KanbanBoard::Member.roles
     end
   end
 end

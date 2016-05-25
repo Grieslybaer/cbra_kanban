@@ -21,8 +21,8 @@ module KanbanBoardUi
       can :update, KanbanBoard::Assignment, user_id: user.id
 
       # abilities for tasks
-      can :manage, KanbanCard::Task, project: { owners: { id: user.id } }
-      can :read, KanbanCard::Task, project: { users: { id: user.id } }
+      can :manage, KanbanBoard.card_class, project: { owners: { id: user.id } }
+      can :read, KanbanBoard.card_class, project: { users: { id: user.id } }
     end
   end
 end

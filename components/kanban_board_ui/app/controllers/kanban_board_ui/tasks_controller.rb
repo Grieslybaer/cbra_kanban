@@ -58,7 +58,7 @@ module KanbanBoardUi
     def destroy
       @task.destroy
       respond_to do |format|
-        format.html { redirect_to project_tasks_url }
+        format.html { redirect_to project_tasks_url, notice: 'Task was successfully deleted.' }
         format.json { head :no_content }
       end
     end
