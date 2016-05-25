@@ -10,9 +10,6 @@ module KanbanBoardUi
       can :read, KanbanBoard::Project, users: { id: user.id }
       
       # abilities for members
-      # can :manage, KanbanBoard::Member do |member|
-      #   member.project.owners.map(&:id).include? user.id
-      # end
       can :manage, KanbanBoard::Member, project: { owners: { id: user.id } }
       can :read, KanbanBoard::Member, project: { users: { id: user.id } }
 
