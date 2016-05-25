@@ -2,9 +2,11 @@ require_dependency "kanban_board_ui/application_controller"
 
 module KanbanBoardUi
   class AssignmentsController < ApplicationController
+    before_filter :authenticate_user!
 
   	def update
   		@assignment = KanbanBoard::Assignment.find(params[:id])
+      authorize! :update, @assignment
   		@project = @assignment.project
       respond_to do |format|
         if @assignment.update(assignment_params)

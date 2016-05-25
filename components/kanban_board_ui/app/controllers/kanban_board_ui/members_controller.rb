@@ -2,11 +2,14 @@ require_dependency "kanban_board_ui/application_controller"
 
 module KanbanBoardUi
   class MembersController < ApplicationController
+    before_filter :authenticate_user!
     before_action :set_project
+    before_action :authorize_project_owner, only: [:create, :update, :destroy]
     before_action :set_member, only: [:update, :destroy]
     before_action :set_index_values, only: [:index]
     
     def index
+      authorize! :read, @project
       @member = @project.members.new
     end
 
@@ -65,6 +68,10 @@ module KanbanBoardUi
       @users = KanbanBoard.user_class.all
       @members = @project.members.includes(:user)
       @roles = KanbanBoard::Member.roles
+    end
+
+    def authorize_project_owner
+      authorize! :manage, @project
     end
   end
 end
