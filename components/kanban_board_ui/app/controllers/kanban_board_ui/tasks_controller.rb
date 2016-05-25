@@ -2,7 +2,11 @@ require_dependency "kanban_board_ui/application_controller"
 
 module KanbanBoardUi
   class TasksController < ApplicationController
+    before_filter :authenticate_user!
+
     before_action :set_project
+    before_action :authorize_project_member, only: [:index, :show]
+    before_action :authorize_project_owner, only: [:new, :edit, :create, :update, :destroy]
     before_action :set_task, only: [:show, :edit, :update, :destroy]
     before_action :set_project_members, only: [:new, :edit]
 
@@ -37,7 +41,6 @@ module KanbanBoardUi
     end
 
     def update
-
       if params[:task][:assignment_attributes]
         @task.assignment.update(task_params[:assignment_attributes])
         params[:task].delete(:assignment_attributes)
@@ -81,5 +84,12 @@ module KanbanBoardUi
       @members = @project.users.all
     end
 
+    def authorize_project_owner
+      authorize! :manage, @project
+    end
+
+    def authorize_project_member
+      authorize! :read, @project
+    end
   end
 end
