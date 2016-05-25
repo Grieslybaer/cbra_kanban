@@ -47,7 +47,7 @@
 	<p class="text-muted"><%= @project.description %></p>
 </div>
 <% if can? :manage, @project %>
-<%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-success pull-right' %>
-<%= link_to 'Add Card', new_project_task_path(@project), class: 'btn btn-primary pull-left' %>
-<%= link_to 'Members', project_members_path(@project), class: 'btn btn-primary pull-left' %>
+	<%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-success pull-right' %>
+	<%= link_to 'Add Card', new_project_task_path(@project), class: 'btn btn-primary pull-right' %>
 <% end %>
+<%= link_to 'Members', project_members_path(@project), class: 'btn btn-primary pull-left' %>

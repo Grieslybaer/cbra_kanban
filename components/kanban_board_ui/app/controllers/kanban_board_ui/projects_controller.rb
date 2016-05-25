@@ -3,8 +3,8 @@ require_dependency "kanban_board_ui/application_controller"
 module KanbanBoardUi
   class ProjectsController < ApplicationController
     before_filter :authenticate_user!
-    #authorize_resource class: KanbanBoard::Project
     before_action :set_project, only: [:show, :edit, :update, :destroy]
+    before_action :authorize_project_owner, only: [:edit, :update, :destroy]
 
     def index
       #@projects = KanbanBoard::Project.includes(:members).where(kanban_board_members: {user_id: current_user.id})
@@ -23,7 +23,6 @@ module KanbanBoardUi
     end
 
     def edit
-      authorize! :update, @project
     end
 
     def create
@@ -41,7 +40,6 @@ module KanbanBoardUi
     end
 
     def update
-      authorize! :update, @project
       respond_to do |format|
         if @project.update(project_params)
           format.html { redirect_to @project, notice: 'Project was successfully updated.' }
@@ -54,7 +52,6 @@ module KanbanBoardUi
     end
 
     def destroy
-      authorize! :destroy, @project
       @project.destroy
       respond_to do |format|
         format.html { redirect_to projects_path }
@@ -69,6 +66,10 @@ module KanbanBoardUi
 
     def project_params
       params.require(:project).permit(:title, :description, :deadline)
+    end
+
+    def authorize_project_owner
+      authorize! :manage, @project
     end
   end
 end
