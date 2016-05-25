@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516092600) do
+ActiveRecord::Schema.define(version: 20160525203408) do
 
   create_table "kanban_board_assignments", force: :cascade do |t|
     t.integer  "project_id"
@@ -48,7 +48,6 @@ ActiveRecord::Schema.define(version: 20160516092600) do
   create_table "kanban_card_tasks", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "priority"
     t.date     "finishing_date"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false

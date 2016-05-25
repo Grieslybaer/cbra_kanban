@@ -20,7 +20,6 @@
 									<h4><%= link_to a.task.name, project_task_path(@project, a.task) %></h4>
 								</div>
 								<div class="panel-body">
-									<p>Priority: <%= a.task.priority %></p>
 									<p><strong>Deadline:</strong> <%= a.task.finishing_date %></p>
 									<% if a.user_id %>
 									<p><strong>User:</strong> <%= a.user.full_name %></p>

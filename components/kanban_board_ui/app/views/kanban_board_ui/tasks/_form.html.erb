@@ -31,12 +31,6 @@
       <%= f.date_field :finishing_date, min: Date.today, class: 'form-control' %>
     </div>
   </div>
-  <div class="form-group">
-    <%= f.label :priority, class: 'col-sm-2 control-label' %>
-    <div class="col-sm-10">
-      <%= f.select :priority, [1, 2, 3, 4, 5].map { |value| [value, value]}, class: 'form-control' %>
-    </div>
-  </div>
   <%= f.fields_for :assignment do |a| %>
     <div class="form-group">
       <%= a.label :user, class: 'col-sm-2 control-label' %>
