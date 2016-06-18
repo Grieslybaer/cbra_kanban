@@ -1,9 +1,12 @@
 require 'test_helper'
 
 module KanbanBoardUi
-  class ProjectControllerTest < ActionController::TestCase
+  class ProjectsControllerTest < ActionController::TestCase
     setup do
       @routes = Engine.routes
+      #@user = User.create(email: 'sgriessner@fh-salzburg.ac.at', password: '12345678', first_name: 'Stephan', last_name: 'Griessner')
+      @user = FactoryGirl.create(:user)
+      sign_in @user
     end
 
     test "should get index" do
@@ -35,6 +38,5 @@ module KanbanBoardUi
       get :destroy
       assert_response :success
     end
-
   end
 end
