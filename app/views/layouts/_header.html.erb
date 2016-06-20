@@ -13,7 +13,7 @@
 			      Me <span class="caret"></span>
 			    </a>
 			    <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
-			    	<li><%= link_to "Profile", kanban_user_profile.user_path(current_user) %></li>
+			    	<li><%= link_to "Profile", account_profile.user_path(current_user) %></li>
 			    	<li role="separator" class="divider"></li>
 			    	<li><%= link_to "Edit Account", account_auth.edit_user_registration_path %></li>
 			      <li><%= link_to "Logout", account_auth.destroy_user_session_path, method: :delete %></li>
