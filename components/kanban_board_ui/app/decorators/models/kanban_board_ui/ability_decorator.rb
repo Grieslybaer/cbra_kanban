@@ -25,4 +25,4 @@ module KanbanBoardUi
 end
 
 # add to abilities attribute
-KanbanAuthorization::Ability.register_ability(KanbanBoardUi::AbilityDecorator)
+AccountAuthorization::Ability.register_ability(KanbanBoardUi::AbilityDecorator)

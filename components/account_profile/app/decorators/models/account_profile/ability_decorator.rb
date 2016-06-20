@@ -12,4 +12,4 @@ module AccountProfile
 end
 
 # add to abilities attribute
-KanbanAuthorization::Ability.register_ability(AccountProfile::AbilityDecorator)
+AccountAuthorization::Ability.register_ability(AccountProfile::AbilityDecorator)

@@ -14,6 +14,6 @@ gemspec
 # gem 'byebug', group: [:development, :test]
 
 path "../" do
-    gem "account"
-    gem "account_authorization"
+  gem "account"
+  gem "account_authorization"
 end

@@ -15,5 +15,5 @@ gemspec
 
 path "../" do
 	gem "kanban_board"
-	gem "kanban_authorization"
+	gem "account_authorization"
 end

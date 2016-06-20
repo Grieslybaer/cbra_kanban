@@ -1,27 +1,31 @@
 PATH
   remote: components
   specs:
-    account_auth (0.0.1)
+    account (0.0.1)
+      rails (~> 4.2.5.2)
+    account_authentication (0.0.1)
       decorators (~> 2.0.1)
       devise
       rails (~> 4.2.5.2)
-    kanban_authorization (0.0.1)
+    account_authorization (0.0.1)
       cancancan (~> 1.10)
+      rails (~> 4.2.5.2)
+    account_profile (0.0.1)
+      account
+      account_authorization
+      decorators (~> 2.0.1)
       rails (~> 4.2.5.2)
     kanban_board (0.0.1)
       decorators (~> 2.0.1)
       rails (~> 4.2.5.2)
     kanban_board_ui (0.0.1)
+      account_authorization
       decorators (~> 2.0.1)
-      kanban_authorization
       kanban_board
       rails (~> 4.2.5.2)
     kanban_card (0.0.1)
       rails (~> 4.2.5.2)
     kanban_dashboard (0.0.1)
-      rails (~> 4.2.5.2)
-    kanban_user_profile (0.0.1)
-      decorators (~> 2.0.1)
       rails (~> 4.2.5.2)
 
 GEM
@@ -190,18 +194,18 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  account_auth!
+  account_authentication!
+  account_authorization!
+  account_profile!
   bootstrap-sass (~> 3.3.6)
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
-  kanban_authorization!
   kanban_board!
   kanban_board_ui!
   kanban_card!
   kanban_dashboard!
-  kanban_user_profile!
   rails (= 4.2.5.2)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

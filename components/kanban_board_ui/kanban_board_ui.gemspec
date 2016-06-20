@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency "rails", "~> 4.2.5.2"
   s.add_dependency "kanban_board"
-  s.add_dependency "kanban_authorization"
+  s.add_dependency "account_authorization"
   s.add_dependency "decorators", "~> 2.0.1"
 
   s.add_development_dependency "sqlite3"
