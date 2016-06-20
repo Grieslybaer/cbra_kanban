@@ -48,8 +48,7 @@ group :development do
   gem 'spring'
 end
 
-path 'components'  do
-	gem 'kanban_dashboard'
+path 'components' do
 	gem 'account_authentication'
 	gem 'account_authorization'
 	gem 'account_profile'
