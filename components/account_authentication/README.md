@@ -1,13 +1,13 @@
-# AccountAuth
-This is a quick guide to use the AccountAuth Engine for Ruby on Rails Applications.
+# AccountAuthentication
+This is a quick guide to use the AccountAuthentication Engine for Ruby on Rails Applications.
 
 This engine adds an authentication syntax (based on Devise) to your application.
 
 ## Getting started
-AccountAuth works with Rails 4.2 onwards. As its not available on a Gemserver, you need to download it manualy and put it somewhere in your application. I recommend to put it into your *vendor/* folder. Maybe create another folder called *engines*. You can then add it to your Gemfile with:
+AccountAuthentication works with Rails 4.2 onwards. As its not available on a Gemserver, you need to download it manualy and put it somewhere in your application. I recommend to put it into your *vendor/* folder. Maybe create another folder called *engines*. You can then add it to your Gemfile with:
 
 ```ruby
-gem 'account_auth', path: "vendor/engines/account_auth"
+gem 'account_authentication', path: "vendor/engines/account_authentication"
 ```
 
 Run the bundle command to install it.
@@ -15,24 +15,24 @@ Run the bundle command to install it.
 Afterwards run:
 
 ```console
-rails generate account_auth:install
+rails generate account_authentication:install
 ```
 
 This will add an initializer to your *config/initializers* folder and mount the engine in your routes.
 
 
 
-After you install AccountAuth, you need to set the classname for the User in the *config/initializers/account_auth.rb* file to something like that:
+After you install AccountAuthentication, you need to set the classname for the User in the *config/initializers/account_authentication.rb* file to something like that:
 
 ```ruby
-AccountAuth.user_class = "User"
+AccountAuthentication.user_class = "User"
 ```
 
 
 The engine is mounted to the */account* path within your applications routes:
 
 ```ruby
-mount AccountAuth::Engine, at: "/account", as: "account_auth"
+mount AccountAuthentication::Engine, at: "/account", as: "account_auth"
 ```
 
 Feel free to specify another path.
@@ -75,4 +75,3 @@ end
 ## License
 
 MIT License.
-
