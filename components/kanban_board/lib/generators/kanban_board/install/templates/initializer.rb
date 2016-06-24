@@ -7,5 +7,5 @@
 # KanbanBoard.card_class = "Card"
 
 # Add an array of the states for the project (including strings)
-# (required) Uncomment the following and add the array:
-KanbanBoard.states = ["backlog", "todo", "in progress", "code review", "done"]
+# (not required) Uncomment the following and add the array:
+# KanbanBoard.states = ["backlog", "todo", "in progress", "code review", "done"]
