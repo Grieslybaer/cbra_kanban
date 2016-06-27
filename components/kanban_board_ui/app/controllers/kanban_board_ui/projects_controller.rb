@@ -7,7 +7,6 @@ module KanbanBoardUi
     before_action :authorize_project_owner, only: [:edit, :update, :destroy]
 
     def index
-      #@projects = KanbanBoard::Project.includes(:members).where(kanban_board_members: {user_id: current_user.id})
       @projects = current_user.projects.all
     end
 

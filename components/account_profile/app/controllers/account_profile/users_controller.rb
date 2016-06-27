@@ -6,11 +6,6 @@ module AccountProfile
     authorize_resource class: Account::User
     before_action :set_user, only: [:edit, :update]
 
-    # GET /users
-    def index
-      @users = Account::User.all
-    end
-
     # GET /users/1
     def show
       @user = Account::User.find(params[:id])
